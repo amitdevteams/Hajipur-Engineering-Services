@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hajipur Engineering Services — Petrol Pump Maintenance, Raipur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E2233;
+    --steel:#153549;
+    --amber:#F2A900;
+    --paper:#F6F4EF;
+    --ink:#1A1A1A;
+    --line:rgba(255,255,255,0.14);
+    --line-dark:rgba(14,34,51,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+  }
+  h1,h2,h3,.brand{
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* HEADER */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--navy);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;
+    max-width:1120px;margin:0 auto;
+  }
+  .brand{
+    color:var(--paper);
+    font-size:1.15rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+  .brand span{color:var(--amber);}
+  .call-link{
+    display:flex;align-items:center;gap:10px;
+    color:var(--paper);
+    font-size:0.95rem;
+    font-weight:500;
+    border:1px solid var(--line);
+    padding:9px 16px;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .call-link:hover{border-color:var(--amber);background:rgba(242,169,0,0.08);}
+  .call-link svg{width:16px;height:16px;flex-shrink:0;}
+
+  /* HERO */
+  .hero{
+    background:var(--navy);
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+    padding:44px 0 52px;
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .hero-eyebrow{
+    font-size:0.85rem;
+    color:var(--amber);
+    font-weight:600;
+    margin-bottom:12px;
+  }
+  .hero h1{
+    font-size:clamp(1.8rem, 3.6vw, 2.75rem);
+    line-height:1.14;
+    max-width:15ch;
+    margin-bottom:16px;
+  }
+  .hero p.lead{
+    font-size:1.08rem;
+    color:rgba(246,244,239,0.82);
+    max-width:46ch;
+    margin-bottom:22px;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .btn-primary{
+    background:var(--amber);
+    color:var(--navy);
+    font-weight:600;
+    padding:14px 26px;
+    font-size:0.98rem;
+    display:inline-flex;align-items:center;gap:10px;
+    border:1px solid var(--amber);
+    transition:background .2s ease, color .2s ease;
+  }
+  .btn-primary:hover{background:transparent;color:var(--amber);}
+  .btn-ghost{
+    padding:14px 26px;
+    font-size:0.98rem;
+    border:1px solid var(--line);
+    color:var(--paper);
+    transition:border-color .2s ease;
+  }
+  .btn-ghost:hover{border-color:var(--amber);}
+
+  /* gauge-needle accent line */
+  .gauge{
+    position:absolute;
+    top:0; right:-6%;
+    height:100%;
+    width:52%;
+    pointer-events:none;
+  }
+  .gauge svg{width:100%;height:100%;}
+
+  /* STRIP */
+  .strip{
+    background:var(--steel);
+    color:var(--paper);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .strip .wrap{
+    display:flex;flex-wrap:wrap;gap:0;
+  }
+  .strip-item{
+    flex:1 1 220px;
+    padding:22px 28px;
+    border-right:1px solid var(--line);
+    font-size:0.92rem;
+    color:rgba(246,244,239,0.85);
+  }
+  .strip-item:last-child{border-right:none;}
+  .strip-item strong{
+    display:block;
+    font-family:'Oswald',sans-serif;
+    font-size:1.5rem;
+    color:var(--paper);
+    font-weight:600;
+    margin-bottom:4px;
+  }
+
+  /* SECTION HEADINGS */
+  section{padding:84px 0;}
+  .section-head{
+    max-width:56ch;
+    margin-bottom:48px;
+  }
+  .section-head .kicker{
+    color:var(--steel);
+    font-weight:600;
+    font-size:0.85rem;
+    margin-bottom:10px;
+  }
+  .section-head h2{
+    font-size:clamp(1.7rem, 3vw, 2.3rem);
+    color:var(--navy);
+    line-height:1.15;
+  }
+  .section-head p{
+    margin-top:14px;
+    color:#4a4a4a;
+    font-size:1.02rem;
+  }
+
+  /* SERVICES: spec-sheet list, not shadow cards */
+  .service-list{
+    border-top:1px solid var(--line-dark);
+  }
+  .service-row{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:24px;
+    padding:28px 0;
+    border-bottom:1px solid var(--line-dark);
+    border-left:3px solid transparent;
+    transition:border-left-color .2s ease, padding-left .2s ease;
+  }
+  .service-row:hover{
+    border-left-color:var(--amber);
+    padding-left:14px;
+  }
+  .service-icon{
+    width:44px;height:44px;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line-dark);
+  }
+  .service-icon svg{width:22px;height:22px;stroke:var(--steel);}
+  .service-row h3{
+    font-size:1.2rem;
+    color:var(--navy);
+    margin-bottom:6px;
+    font-weight:500;
+  }
+  .service-row p{color:#4a4a4a;font-size:0.98rem;max-width:60ch;}
+
+  /* ABOUT */
+  .about{background:#EDE9DF;}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1.4fr;
+    gap:56px;
+    align-items:start;
+  }
+  .owner-card{
+    background:var(--navy);
+    color:var(--paper);
+    padding:36px 32px;
+  }
+  .owner-photo{
+    width:88px;height:88px;
+    border:2px solid var(--amber);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;
+  }
+  .owner-photo svg{width:44px;height:44px;stroke:var(--amber);}
+  .owner-card h3{font-size:1.4rem;margin-bottom:4px;}
+  .owner-card .role{color:var(--amber);font-size:0.9rem;font-weight:500;margin-bottom:20px;}
+  .owner-card .meta-row{
+    display:flex;justify-content:space-between;
+    font-size:0.9rem;
+    padding:10px 0;
+    border-top:1px solid var(--line);
+    color:rgba(246,244,239,0.8);
+  }
+  .owner-card .meta-row:last-child{border-bottom:1px solid var(--line);}
+  .about-copy p{margin-bottom:16px;color:#3a3a3a;font-size:1.02rem;}
+  .about-copy .credentials{
+    margin-top:26px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .cred{
+    border:1px solid var(--line-dark);
+    padding:16px 18px;
+    background:var(--paper);
+  }
+  .cred strong{display:block;font-family:'Oswald',sans-serif;font-size:1.6rem;color:var(--navy);}
+  .cred span{font-size:0.85rem;color:#5a5a5a;}
+
+  /* CONTACT */
+  .contact{
+    background:var(--navy);
+    color:var(--paper);
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  .contact h2{color:var(--paper);}
+  .contact-list{margin-top:28px;}
+  .contact-item{
+    display:flex;gap:16px;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .contact-item:first-child{border-top:1px solid var(--line);}
+  .contact-item svg{width:20px;height:20px;stroke:var(--amber);flex-shrink:0;margin-top:2px;}
+  .contact-item .label{font-size:0.8rem;color:rgba(246,244,239,0.6);margin-bottom:4px;}
+  .contact-item .value{font-size:1.02rem;font-weight:500;}
+  .contact-item .value.placeholder{color:rgba(246,244,239,0.45);font-style:italic;font-weight:400;}
+  .map-frame{
+    width:100%;height:100%;
+    min-height:280px;
+    border:1px solid var(--line);
+  }
+
+  footer{
+    background:var(--steel);
+    color:rgba(246,244,239,0.7);
+    text-align:center;
+    padding:22px 0;
+    font-size:0.85rem;
+    border-top:1px solid var(--line);
+  }
+
+  @media(max-width:800px){
+    .about-grid, .contact-grid{grid-template-columns:1fr;}
+    .strip-item{border-right:none;border-bottom:1px solid var(--line);}
+    .gauge{display:none;}
+    .header-inner{flex-direction:column;gap:14px;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">Hajipur <span>Engineering</span> Services</div>
+    <a class="call-link" href="tel:+918269887902">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +91 82698 87902
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="gauge" aria-hidden="true">
+    <svg viewBox="0 0 480 420" fill="none">
+      <!-- gauge rings, kept quiet in the background -->
+      <circle cx="345" cy="230" r="150" stroke="rgba(246,244,239,0.06)" stroke-width="1"/>
+      <circle cx="345" cy="230" r="112" stroke="rgba(246,244,239,0.06)" stroke-width="1"/>
+
+      <!-- station canopy -->
+      <line x1="150" y1="70" x2="430" y2="70" stroke="rgba(246,244,239,0.22)" stroke-width="4" stroke-linecap="round"/>
+      <line x1="185" y1="70" x2="185" y2="34" stroke="rgba(246,244,239,0.22)" stroke-width="4" stroke-linecap="round"/>
+      <line x1="395" y1="70" x2="395" y2="34" stroke="rgba(246,244,239,0.22)" stroke-width="4" stroke-linecap="round"/>
+
+      <!-- dispenser body -->
+      <rect x="230" y="140" width="100" height="180" rx="6" stroke="rgba(246,244,239,0.5)" stroke-width="3"/>
+      <rect x="246" y="160" width="68" height="52" rx="3" stroke="#F2A900" stroke-width="2.5"/>
+      <line x1="256" y1="176" x2="296" y2="176" stroke="#F2A900" stroke-width="2"/>
+      <line x1="256" y1="190" x2="286" y2="190" stroke="#F2A900" stroke-width="2"/>
+      <circle cx="255" cy="240" r="5" stroke="rgba(246,244,239,0.5)" stroke-width="2.5"/>
+      <circle cx="305" cy="240" r="5" stroke="rgba(246,244,239,0.5)" stroke-width="2.5"/>
+      <line x1="230" y1="270" x2="330" y2="270" stroke="rgba(246,244,239,0.35)" stroke-width="2"/>
+
+      <!-- hose + nozzle -->
+      <path d="M330 250 C 380 250, 380 300, 350 320 S 320 360, 355 372" stroke="#F2A900" stroke-width="3" stroke-linecap="round"/>
+      <path d="M355 372 l 20 -8 l 8 18 l -22 10 Z" stroke="#F2A900" stroke-width="2.5" stroke-linejoin="round"/>
+
+      <!-- base platform -->
+      <line x1="180" y1="330" x2="380" y2="330" stroke="rgba(246,244,239,0.4)" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="hero-eyebrow">Petrol pump engineering &amp; maintenance — Raipur, Chhattisgarh</div>
+    <h1>Fuel stations run on uptime. We keep the equipment running.</h1>
+    <p class="lead">Hajipur Engineering Services handles dispenser repair, submersible pump servicing, tank calibration and annual maintenance contracts for petrol pump owners across Raipur and Chhattisgarh.</p>
+    <div class="hero-actions">
+      <a href="tel:+918269887902" class="btn-primary">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call for service
+      </a>
+      <a href="#contact" class="btn-ghost">Request a site visit</a>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-item"><strong>24/7</strong>Breakdown call-out for pump &amp; dispenser faults</div>
+    <div class="strip-item"><strong>AMC</strong>Annual maintenance contracts for petrol pumps</div>
+    <div class="strip-item"><strong>Raipur</strong>Based locally, serving sites across Chhattisgarh</div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">What we do</div>
+      <h2>Maintenance &amp; repair for every part of the forecourt</h2>
+      <p>From the submersible pump in the ground to the dispenser at the nozzle, we service the equipment that keeps a petrol pump compliant and operational.</p>
+    </div>
+
+    <div class="service-list">
+      <div class="service-row">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><rect x="4" y="9" width="16" height="11" rx="1"/><path d="M12 13v3"/></svg>
+        </div>
+        <div>
+          <h3>Fuel dispenser servicing &amp; repair</h3>
+          <p>Routine servicing, flow-meter calibration, nozzle and hose replacement, and breakdown repair for dispenser units.</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <div>
+          <h3>Submersible pump maintenance</h3>
+          <p>Installation, inspection and repair of submersible pumps and motors that draw fuel from underground storage tanks.</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div>
+          <h3>Underground tank calibration</h3>
+          <p>Dip-stick and tank chart calibration to keep stock measurement accurate and audit-ready.</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6z"/></svg>
+        </div>
+        <div>
+          <h3>Electrical &amp; electronic systems</h3>
+          <p>Wiring, control panels, totalizers and indicator boards — repair and preventive checks to avoid downtime.</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z"/></svg>
+        </div>
+        <div>
+          <h3>Safety compliance &amp; inspection</h3>
+          <p>Equipment checks aligned with fire and safety norms, ahead of licensing renewals and inspections.</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4v16h16"/><path d="M4 15l4-4 4 3 6-7"/></svg>
+        </div>
+        <div>
+          <h3>Annual maintenance contracts</h3>
+          <p>Scheduled upkeep on a yearly contract, so equipment issues get caught before they become breakdowns.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="owner-card">
+        <div class="owner-photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+        </div>
+        <h3>Rajesh Kumar Thakur</h3>
+        <div class="role">Proprietor, Hajipur Engineering Services</div>
+        <div class="meta-row"><span>Phone</span><span>+91 82698 87902</span></div>
+        <div class="meta-row"><span>Based in</span><span>Raipur, Chhattisgarh</span></div>
+      </div>
+      <div class="about-copy">
+        <div class="section-head" style="margin-bottom:20px;">
+          <div class="kicker">About the contractor</div>
+          <h2>Local, hands-on service for petrol pump owners</h2>
+        </div>
+        <p>Hajipur Engineering Services is run by Rajesh Kumar Thakur, a petrol pump maintenance contractor based in Raipur, Chhattisgarh. The work covers the day-to-day mechanical and electrical upkeep that a fuel station depends on — from dispenser faults to submersible pump servicing — handled directly, without layers of subcontracting.</p>
+        <p>Petrol pump owners across Raipur and the surrounding areas rely on this direct, single-point-of-contact approach for both scheduled maintenance and urgent breakdown calls.</p>
+        <div class="credentials">
+          <div class="cred"><strong>Raipur</strong><span>Home base &amp; primary service area</span></div>
+          <div class="cred"><strong>Direct</strong><span>Owner-operated, no middlemen</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="kicker" style="color:var(--amber);">Get in touch</div>
+        <h2>Need a pump or dispenser serviced?</h2>
+        <p style="color:rgba(246,244,239,0.75);margin-top:14px;">Call directly to discuss a breakdown, a routine service, or setting up an annual maintenance contract.</p>
+
+        <div class="contact-list">
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <div class="label">Phone</div>
+              <a class="value" href="tel:+918269887902">+91 82698 87902</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+            <div>
+              <div class="label">Email</div>
+              <span class="value placeholder">add email address here</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <div class="label">Address</div>
+              <span class="value">Raipur, Chhattisgarh — 492001</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <iframe class="map-frame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Raipur,+Chhattisgarh+492001&output=embed">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Hajipur Engineering Services · Rajesh Kumar Thakur · Raipur, Chhattisgarh
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
